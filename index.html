@@ -1,129 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIMAX — Innovative Care · Advanced Technology</title>
-  <meta name="description" content="BIMAX 品牌官网：水感与科技感并重，三维 LOGO 与背景材质联动，极简高端。">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIMAX - Innovative Skincare</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Three.js / GSAP -->
-  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.158.0/examples/js/loaders/FontLoader.js"></script>
-  <script src="https://unpkg.com/three@0.158.0/examples/js/geometries/TextGeometry.js"></script>
-  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <header class="site-nav">
-    <div class="nav-inner">
-      <div class="logo-type">BIMAX</div>
-      <nav class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#posters">Showcase</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Canvas for Three.js -->
+  <canvas id="bg3d"></canvas>
 
-  <!-- 3D Hero -->
-  <section id="hero" class="hero">
-    <canvas id="bg3d"></canvas>
-    <div class="hero-copy">
-      <h1>BIMAX</h1>
-      <p class="tagline">Innovative Care · Advanced Technology</p>
-      <a class="btn" href="#posters">Explore</a>
-    </div>
-    <div class="scroll-ind">Scroll</div>
-  </section>
+  <div class="overlay">
+    <header>
+      <h1 class="logo">BIMAX</h1>
+      <p class="slogan">Innovative Care · Advanced Skincare Technology</p>
+    </header>
 
-  <!-- Scroll panels drive background modes -->
-  <section id="s1" class="panel">
-    <div class="panel-inner">
-      <h2>Clean · Pure · Efficient</h2>
-      <p>水波：洁净活力的灵感源泉，象征我们对皮肤与环境的双重友好。</p>
-    </div>
-  </section>
-
-  <section id="s2" class="panel">
-    <div class="panel-inner">
-      <h2>Soft Bubbles</h2>
-      <p>泡泡：温和亲肤的护理体验，带来轻盈与舒缓。</p>
-    </div>
-  </section>
-
-  <section id="s3" class="panel">
-    <div class="panel-inner">
-      <h2>Iridescent Silk</h2>
-      <p>流光丝绸：高分子与表活的协同，带来丝滑触感与高级质感。</p>
-    </div>
-  </section>
-
-  <!-- Interactive posters -->
-  <section id="posters" class="posters">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Brand Showcase</h2>
-        <p>极简海报式展示，hover 有水波扩散与轻微视差，滚动淡入。</p>
+    <!-- Section triggers for ScrollTrigger -->
+    <section id="s1">
+      <h2>About BIMAX</h2>
+      <p>Pure · Gentle · Effective</p>
+      <div class="cards">
+        <div class="card">98%+ Natural Ingredients</div>
+        <div class="card">16M+ Units Daily Capacity</div>
+        <div class="card">30+ Global Markets</div>
+        <div class="card">50M+ Happy Users</div>
       </div>
+    </section>
+
+    <section id="s2">
+      <h2>Essence of Care</h2>
       <div class="poster-grid">
-        <a class="poster" style="--img:url('assets/water-blob.png')">
-          <div class="poster-meta">
-            <h3>Pure Water</h3>
-            <p>高纯水体系 · 低残留 · 敏感肌可用</p>
-          </div>
-        </a>
-        <a class="poster" style="--img:url('assets/pink-bubbles.png')">
-          <div class="poster-meta">
-            <h3>Soft Bubbles</h3>
-            <p>细腻泡沫 · 亲肤洗感 · 易冲洗</p>
-          </div>
-        </a>
-        <a class="poster" style="--img:url('assets/silk-rainbow.png')">
-          <div class="poster-meta">
-            <h3>Silk Finish</h3>
-            <p>丝绸般顺滑 · 微光泽 · 视觉高级</p>
-          </div>
-        </a>
+        <div class="poster water">源自纯净</div>
+        <div class="poster bubble">轻盈清洁</div>
+        <div class="poster silk">科技守护</div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About / concise brand copy -->
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="about-grid">
-        <div>
-          <h2>About BIMAX</h2>
-          <p>我们以“科技 × 洁净”为核心，专注高标准洗护研发与制造。重点关注安全性、可持续以及消费者的真实体验。</p>
-          <ul class="bullets">
-            <li>环保：无磷、无荧光剂、0 微塑料，配方生物降解率 &gt; 98%</li>
-            <li>品质：欧洲/国标双测，皮肤学测试合格</li>
-            <li>产能：日产能 1600 万件，稳定供给全球市场</li>
-            <li>研发：30+ 发明专利，持续推进绿色配方</li>
-          </ul>
-        </div>
-        <div class="stats">
-          <div class="stat"><span>98%+</span><label>生物降解率</label></div>
-          <div class="stat"><span>16M/day</span><label>日产能</label></div>
-          <div class="stat"><span>30+</span><label>发明专利</label></div>
-          <div class="stat"><span>50M+</span><label>服务家庭</label></div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="s3">
+      <h2>Contact Us</h2>
+      <p>Email: contact@bimax.com</p>
+    </section>
+  </div>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <p>商务合作：biz@bimax.com · Shanghai, China</p>
-    </div>
-  </section>
+  <!-- Three.js + GSAP libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/FontLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/geometries/TextGeometry.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
-  <footer class="site-foot">
-    <div class="wrap"><span>© 2025 BIMAX</span></div>
-  </footer>
-
+  <!-- Your main script -->
   <script src="script.js"></script>
 </body>
 </html>
