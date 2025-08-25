@@ -1,100 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BIMAX - Skincare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIMAX - Official</title>
   <style>
-    body,html {
-      margin:0; padding:0; overflow:hidden;
-      font-family: Helvetica, sans-serif;
-      background:#000; color:#fff;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      background: #000;
     }
-    canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
-    .overlay {
-      position:relative; z-index:10; text-align:center; padding:3rem;
-    }
-    section { min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
-    h1.logo { font-size:3rem; margin-bottom:1rem; }
-    .poster-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:1rem; margin-top:2rem;
-    }
-    .poster {
-      background:rgba(255,255,255,0.08);
-      border-radius:1rem; padding:3rem 1rem; font-weight:bold;
-      backdrop-filter:blur(8px); cursor:pointer;
+    canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      font-family: sans-serif;
+      z-index: 2;
+      position: relative;
     }
   </style>
 </head>
 <body>
   <canvas id="bg3d"></canvas>
 
-  <div class="overlay">
-    <header>
-      <h1 class="logo">BIMAX</h1>
-      <p>Innovative Care · Advanced Skincare Technology</p>
-    </header>
+  <section id="s1">Pure Water Energy</section>
+  <section id="s2">Bubble Care</section>
+  <section id="s3">Silk & Glow</section>
 
-    <section id="s1"><h2>About BIMAX</h2><p>Pure · Gentle · Effective</p></section>
-    <section id="s2"><h2>Essence of Care</h2>
-      <div class="poster-grid">
-        <div class="poster">源自纯净</div>
-        <div class="poster">轻盈清洁</div>
-        <div class="poster">科技守护</div>
-      </div>
-    </section>
-    <section id="s3"><h2>Contact Us</h2><p>Email: contact@bimax.com</p></section>
-  </div>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Three.js + GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/FontLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/geometries/TextGeometry.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Three.js (module mode) -->
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
+    import { FontLoader } from 'https://unpkg.com/three@0.158.0/examples/jsm/loaders/FontLoader.js';
+    import { TextGeometry } from 'https://unpkg.com/three@0.158.0/examples/jsm/geometries/TextGeometry.js';
 
-  <script>
     gsap.registerPlugin(ScrollTrigger);
 
+    // Renderer & Scene
     const canvas = document.getElementById('bg3d');
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
-    camera.position.set(0,0,6);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.set(0, 0.9, 6);
 
-    const light = new THREE.PointLight(0xffffff,1); light.position.set(3,3,3); scene.add(light);
-    const ambient = new THREE.AmbientLight(0xffffff,0.4); scene.add(ambient);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.35); scene.add(ambient);
+    const point = new THREE.PointLight(0x88ddff, 1.2, 40); point.position.set(4,3,6); scene.add(point);
 
-    // Rotating logo
+    // Background sphere
+    const bgGeo = new THREE.SphereGeometry(60, 96, 64);
+    const bgMat = new THREE.MeshBasicMaterial({ color: 0x0ea5e9, side: THREE.BackSide });
+    const bgMesh = new THREE.Mesh(bgGeo, bgMat); scene.add(bgMesh);
+
+    // Bubbles
+    const bubbleCount = 60;
+    const bubbleGeo = new THREE.SphereGeometry(.12, 20, 16);
+    const bubbleMat = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      transmission: 1,
+      thickness: 1.2,
+      roughness: .15,
+      transparent: true,
+      opacity: .4
+    });
+    const bubbles = new THREE.InstancedMesh(bubbleGeo, bubbleMat, bubbleCount);
+    const dummy = new THREE.Object3D();
+    for (let i=0; i<bubbleCount; i++) {
+      dummy.position.set((Math.random()*2-1)*6,(Math.random()*2-1)*3,(Math.random()*2-1)*2);
+      dummy.scale.setScalar(.6+Math.random()*1.8);
+      dummy.updateMatrix();
+      bubbles.setMatrixAt(i,dummy.matrix);
+    }
+    scene.add(bubbles);
+
+    // 3D Logo
     let logoMesh;
-    new THREE.FontLoader().load("https://unpkg.com/three@0.158.0/examples/fonts/helvetiker_bold.typeface.json", font=>{
-      const geo = new THREE.TextGeometry("BIMAX",{font,size:1,height:0.3});
-      const mat = new THREE.MeshStandardMaterial({color:0x7cc6ff, metalness:0.8, roughness:0.3});
-      logoMesh = new THREE.Mesh(geo,mat);
-      logoMesh.position.set(-2.5,0,0);
+    const loader = new FontLoader();
+    loader.load('https://unpkg.com/three@0.158.0/examples/fonts/helvetiker_bold.typeface.json', (font) => {
+      const geo = new TextGeometry("BIMAX", {
+        font,
+        size: 1.2,
+        height: 0.28,
+        bevelEnabled: true,
+        bevelThickness: 0.02,
+        bevelSize: 0.02,
+        bevelSegments: 2
+      });
+      const mat = new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color('#7cc6ff'),
+        metalness: 1,
+        roughness: 0.2,
+        reflectivity: 1,
+        clearcoat: 1,
+      });
+      logoMesh = new THREE.Mesh(geo, mat);
+      logoMesh.position.set(-3.4, 0, 0);
       scene.add(logoMesh);
     });
 
-    // Background sphere
-    const bgGeo = new THREE.SphereGeometry(30,64,64);
-    const bgMat = new THREE.MeshBasicMaterial({color:0x0ea5e9, side:THREE.BackSide});
-    const bgMesh = new THREE.Mesh(bgGeo,bgMat); scene.add(bgMesh);
+    // Animations
+    const toWater=()=>{ gsap.to(bgMat.color,{r:.1,g:.65,b:.91,duration:1.2}); gsap.to(bubbleMat,{opacity:0,duration:.8}); };
+    const toBubbles=()=>{ gsap.to(bgMat.color,{r:.48,g:.76,b:1.,duration:1.2}); gsap.to(bubbleMat,{opacity:.35,duration:1}); };
+    const toSilk = ()=>{ gsap.to(bgMat.color,{r:1.,g:.85,b:.75,duration:1.2}); gsap.to(bubbleMat,{opacity:0,duration:.8}); };
 
-    // Scroll effects
-    ScrollTrigger.create({ trigger:"#s1", start:"top center", onEnter:()=>bgMat.color.set(0x0ea5e9) });
-    ScrollTrigger.create({ trigger:"#s2", start:"top center", onEnter:()=>bgMat.color.set(0xffaacc) });
-    ScrollTrigger.create({ trigger:"#s3", start:"top center", onEnter:()=>bgMat.color.set(0xffffff) });
+    ScrollTrigger.create({ trigger:"#s1", start:"top center", onEnter:toWater });
+    ScrollTrigger.create({ trigger:"#s2", start:"top center", onEnter:toBubbles });
+    ScrollTrigger.create({ trigger:"#s3", start:"top center", onEnter:toSilk });
 
-    window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();});
+    // Resize & loop
+    addEventListener('resize',()=>{ renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); });
 
-    function animate(){
+    function animate() {
       requestAnimationFrame(animate);
-      if(logoMesh) logoMesh.rotation.y += 0.01;
+      if(logoMesh){ logoMesh.rotation.y += 0.005; }
       renderer.render(scene,camera);
     }
     animate();
+    toWater();
   </script>
 </body>
 </html>
