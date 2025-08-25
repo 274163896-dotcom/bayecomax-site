@@ -3,108 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>百亿极致资本</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>BIMAX — 创新洗护 · 科技未来</title>
+  <meta name="description" content="BIMAX 专注洗护行业的创新科技与可持续解决方案，提供面向未来的产品与服务。" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Three & Vanta -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-white text-gray-800">
-  <!-- 导航栏 -->
-  <header class="fixed w-full bg-white shadow z-50">
-    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <div class="text-2xl font-bold">百亿极致资本</div>
-      <ul class="hidden md:flex space-x-6">
-        <li><a href="#home" class="hover:text-blue-500">首页</a></li>
-        <li><a href="#philosophy" class="hover:text-blue-500">投资理念</a></li>
-        <li><a href="#portfolio" class="hover:text-blue-500">投资案例</a></li>
-        <li><a href="#team" class="hover:text-blue-500">团队</a></li>
-        <li><a href="#news" class="hover:text-blue-500">新闻</a></li>
-        <li><a href="#contact" class="hover:text-blue-500">联系我们</a></li>
-      </ul>
+<body class="bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+  <!-- Nav -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-slate-900/40 border-b border-white/10 transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-extrabold tracking-widest text-xl">
+        <span class="logo">BIMAX</span>
+      </a>
+      <button id="menuBtn" class="md:hidden px-3 py-2 rounded-lg border border-white/20">MENU</button>
+      <nav id="nav" class="hidden md:flex gap-6 text-sm">
+        <a href="#highlights" class="nav-link">核心优势</a>
+        <a href="#products" class="nav-link">产品与服务</a>
+        <a href="#values" class="nav-link">品牌价值</a>
+        <a href="#contact" class="nav-link">联系我们</a>
+      </nav>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden px-6 pb-4">
+      <a href="#highlights" class="mobile-link">核心优势</a>
+      <a href="#products" class="mobile-link">产品与服务</a>
+      <a href="#values" class="mobile-link">品牌价值</a>
+      <a href="#contact" class="mobile-link">联系我们</a>
     </nav>
   </header>
 
-  <!-- 首页展示 -->
-  <section id="home" class="h-screen flex items-center justify-center bg-gray-100" data-aos="fade-up">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-center">助力企业成长 · 共创美好未来</h1>
-  </section>
-
-  <!-- 投资理念 -->
-  <section id="philosophy" class="py-20 container mx-auto px-6" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-6 text-center">投资理念</h2>
-    <p class="text-lg text-center max-w-3xl mx-auto">我们专注于长期价值投资，以创新驱动增长，秉承诚信、共赢、专业的原则，赋能行业未来。</p>
-  </section>
-
-  <!-- 投资案例 -->
-  <section id="portfolio" class="py-20 bg-gray-50" data-aos="fade-up">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-12 text-center">投资案例</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-        <img src="assets/logo1.png" alt="案例1" class="mx-auto h-16 object-contain" />
-        <img src="assets/logo2.png" alt="案例2" class="mx-auto h-16 object-contain" />
-        <img src="assets/logo3.png" alt="案例3" class="mx-auto h-16 object-contain" />
-        <img src="assets/logo4.png" alt="案例4" class="mx-auto h-16 object-contain" />
+  <!-- Hero with water particles -->
+  <section id="home" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+    <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
+    <div class="text-center px-6" data-aos="fade-up">
+      <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight mb-6">
+        <span class="logo block mb-4">BIMAX</span>
+        <span class="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          Innovative Care · Advanced Technology
+        </span>
+      </h1>
+      <p class="max-w-2xl mx-auto mt-4 text-slate-200/90">
+        让清洁更高效 · 更健康 · 更可持续
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3 justify-center">
+        <a href="#highlights" class="btn-primary">了解更多</a>
+        <a href="#contact" class="btn-ghost">商务合作</a>
       </div>
+    </div>
+    <div class="absolute bottom-6 inset-x-0 flex justify-center">
+      <a href="#highlights" class="animate-bounce text-slate-100/70 text-sm">Scroll</a>
     </div>
   </section>
 
-  <!-- 团队 -->
-  <section id="team" class="py-20 container mx-auto px-6" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-12 text-center">核心团队</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div>
-        <img src="assets/team1.jpg" alt="团队1" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
-        <h3 class="text-xl font-semibold">张伟</h3>
-        <p class="text-gray-600">创始合伙人</p>
-      </div>
-      <div>
-        <img src="assets/team2.jpg" alt="团队2" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
-        <h3 class="text-xl font-semibold">李娜</h3>
-        <p class="text-gray-600">投资总监</p>
-      </div>
-      <div>
-        <img src="assets/team3.jpg" alt="团队3" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
-        <h3 class="text-xl font-semibold">王强</h3>
-        <p class="text-gray-600">高级顾问</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 新闻 -->
-  <section id="news" class="py-20 bg-gray-50" data-aos="fade-up">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-12 text-center">最新新闻</h2>
-      <div class="space-y-6 max-w-3xl mx-auto">
-        <div class="p-6 bg-white shadow rounded-lg hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">百亿极致资本完成新一轮融资</h3>
-          <p class="text-gray-600">我们已完成最新一期基金募集，将持续支持优秀企业成长。</p>
+  <!-- Highlights -->
+  <section id="highlights" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">核心优势</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card" data-aos="fade-up">
+          <div class="card-glow"></div>
+          <h3 class="card-title">环保科技</h3>
+          <p class="card-desc">配方生物降解率 >98%，无磷、无荧光剂、无微塑料，更安全更环保。</p>
         </div>
-        <div class="p-6 bg-white shadow rounded-lg hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">投资案例荣获行业大奖</h3>
-          <p class="text-gray-600">我们的投资组合企业获得了国际创新奖项，彰显了卓越实力。</p>
+        <div class="card" data-aos="fade-up" data-aos-delay="60">
+          <div class="card-glow"></div>
+          <h3 class="card-title">全球产能</h3>
+          <p class="card-desc">日产能达 1600 万件，覆盖全球 5000 万+ 家庭用户，保障供应稳定。</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="120">
+          <div class="card-glow"></div>
+          <h3 class="card-title">研发实力</h3>
+          <p class="card-desc">联合绿色洗涤研究院，已获 30+ 发明专利，持续推动创新与品质升级。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 联系我们 -->
-  <section id="contact" class="py-20 container mx-auto px-6" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-6 text-center">联系我们</h2>
-    <form class="max-w-xl mx-auto space-y-4">
-      <input type="text" placeholder="姓名" class="w-full border p-3 rounded" required />
-      <input type="email" placeholder="邮箱" class="w-full border p-3 rounded" required />
-      <textarea placeholder="留言内容" class="w-full border p-3 rounded h-32" required></textarea>
-      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">发送</button>
-    </form>
+  <!-- Products & Services -->
+  <section id="products" class="section alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">产品与服务</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div class="card" data-aos="fade-up">
+          <div class="card-glow"></div>
+          <h3 class="card-title">洗护科技</h3>
+          <p class="card-desc">高效抑菌、低残留、低能耗的清洁护理方案，适用于家庭与商用场景。</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="60">
+          <div class="card-glow"></div>
+          <h3 class="card-title">护理方案</h3>
+          <p class="card-desc">从配方研发到场景落地的一体化服务，满足多样化洗护需求。</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="120">
+          <div class="card-glow"></div>
+          <h3 class="card-title">可持续</h3>
+          <p class="card-desc">绿色供应链与环保包装，节水降碳，推动可持续发展。</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- 页脚 -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    <p>© 2025 百亿极致资本 版权所有</p>
+  <!-- Values -->
+  <section id="values" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">品牌价值</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="value" data-aos="fade-up">
+          <h4>创新</h4>
+          <p>持续研发与技术迭代，引领行业升级。</p>
+        </div>
+        <div class="value" data-aos="fade-up" data-aos-delay="60">
+          <h4>健康</h4>
+          <p>以用户安全为核心，呵护肌肤与呼吸环境。</p>
+        </div>
+        <div class="value" data-aos="fade-up" data-aos-delay="120">
+          <h4>可持续</h4>
+          <p>推动绿色供应链与环保生产，降低环境负担。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">联系我们</h2>
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        <form class="space-y-4" data-aos="fade-up">
+          <input class="input" type="text" placeholder="姓名 Name" required />
+          <input class="input" type="email" placeholder="邮箱 Email" required />
+          <textarea class="input h-32" placeholder="留言 Message"></textarea>
+          <button class="btn-primary w-full" type="submit">发送</button>
+        </form>
+        <div class="space-y-3 text-slate-300/90" data-aos="fade-up" data-aos-delay="80">
+          <p>商务合作：biz@bimax.com</p>
+          <p>公司地址：上海 · 浦东新区</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+      <span class="logo">BIMAX</span>
+      <span>© 2025 BIMAX. All Rights Reserved.</span>
+    </div>
   </footer>
 
-  <script>
-    AOS.init({ duration: 1000 });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
