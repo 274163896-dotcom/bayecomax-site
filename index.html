@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>百亿极致资本</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- 导航栏 -->
+  <header class="fixed w-full bg-white shadow z-50">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="text-2xl font-bold">百亿极致资本</div>
+      <ul class="hidden md:flex space-x-6">
+        <li><a href="#home" class="hover:text-blue-500">首页</a></li>
+        <li><a href="#philosophy" class="hover:text-blue-500">投资理念</a></li>
+        <li><a href="#portfolio" class="hover:text-blue-500">投资案例</a></li>
+        <li><a href="#team" class="hover:text-blue-500">团队</a></li>
+        <li><a href="#news" class="hover:text-blue-500">新闻</a></li>
+        <li><a href="#contact" class="hover:text-blue-500">联系我们</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 首页展示 -->
+  <section id="home" class="h-screen flex items-center justify-center bg-gray-100" data-aos="fade-up">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-center">助力企业成长 · 共创美好未来</h1>
+  </section>
+
+  <!-- 投资理念 -->
+  <section id="philosophy" class="py-20 container mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center">投资理念</h2>
+    <p class="text-lg text-center max-w-3xl mx-auto">我们专注于长期价值投资，以创新驱动增长，秉承诚信、共赢、专业的原则，赋能行业未来。</p>
+  </section>
+
+  <!-- 投资案例 -->
+  <section id="portfolio" class="py-20 bg-gray-50" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center">投资案例</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+        <img src="assets/logo1.png" alt="案例1" class="mx-auto h-16 object-contain" />
+        <img src="assets/logo2.png" alt="案例2" class="mx-auto h-16 object-contain" />
+        <img src="assets/logo3.png" alt="案例3" class="mx-auto h-16 object-contain" />
+        <img src="assets/logo4.png" alt="案例4" class="mx-auto h-16 object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 团队 -->
+  <section id="team" class="py-20 container mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-12 text-center">核心团队</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <img src="assets/team1.jpg" alt="团队1" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
+        <h3 class="text-xl font-semibold">张伟</h3>
+        <p class="text-gray-600">创始合伙人</p>
+      </div>
+      <div>
+        <img src="assets/team2.jpg" alt="团队2" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
+        <h3 class="text-xl font-semibold">李娜</h3>
+        <p class="text-gray-600">投资总监</p>
+      </div>
+      <div>
+        <img src="assets/team3.jpg" alt="团队3" class="mx-auto rounded-full h-32 w-32 object-cover mb-4" />
+        <h3 class="text-xl font-semibold">王强</h3>
+        <p class="text-gray-600">高级顾问</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新闻 -->
+  <section id="news" class="py-20 bg-gray-50" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center">最新新闻</h2>
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <div class="p-6 bg-white shadow rounded-lg hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">百亿极致资本完成新一轮融资</h3>
+          <p class="text-gray-600">我们已完成最新一期基金募集，将持续支持优秀企业成长。</p>
+        </div>
+        <div class="p-6 bg-white shadow rounded-lg hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">投资案例荣获行业大奖</h3>
+          <p class="text-gray-600">我们的投资组合企业获得了国际创新奖项，彰显了卓越实力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="py-20 container mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center">联系我们</h2>
+    <form class="max-w-xl mx-auto space-y-4">
+      <input type="text" placeholder="姓名" class="w-full border p-3 rounded" required />
+      <input type="email" placeholder="邮箱" class="w-full border p-3 rounded" required />
+      <textarea placeholder="留言内容" class="w-full border p-3 rounded h-32" required></textarea>
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">发送</button>
+    </form>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>© 2025 百亿极致资本 版权所有</p>
+  </footer>
+
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>
+</html>
