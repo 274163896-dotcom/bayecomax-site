@@ -1,159 +1,127 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BIMAX — 创新洗护 · 科技未来</title>
-  <meta name="description" content="BIMAX 专注洗护行业的创新科技与可持续解决方案，提供面向未来的产品与服务。" />
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Three & Vanta -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIMAX — Innovative Care · Advanced Technology</title>
+  <meta name="description" content="BIMAX 品牌官网：水感与科技感并重，三维 LOGO 与背景材质联动，极简高端。">
   <link rel="stylesheet" href="style.css" />
+  <!-- Three.js / GSAP -->
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/examples/js/loaders/FontLoader.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/examples/js/geometries/TextGeometry.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
-  <!-- Nav -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-slate-900/40 border-b border-white/10 transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-2 font-extrabold tracking-widest text-xl">
-        <span class="logo">BIMAX</span>
-      </a>
-      <button id="menuBtn" class="md:hidden px-3 py-2 rounded-lg border border-white/20">MENU</button>
-      <nav id="nav" class="hidden md:flex gap-6 text-sm">
-        <a href="#highlights" class="nav-link">核心优势</a>
-        <a href="#products" class="nav-link">产品与服务</a>
-        <a href="#values" class="nav-link">品牌价值</a>
-        <a href="#contact" class="nav-link">联系我们</a>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <div class="logo-type">BIMAX</div>
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#posters">Showcase</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
-    <nav id="mobileNav" class="md:hidden hidden px-6 pb-4">
-      <a href="#highlights" class="mobile-link">核心优势</a>
-      <a href="#products" class="mobile-link">产品与服务</a>
-      <a href="#values" class="mobile-link">品牌价值</a>
-      <a href="#contact" class="mobile-link">联系我们</a>
-    </nav>
   </header>
 
-  <!-- Hero with water particles -->
-  <section id="home" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
-    <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
-    <div class="text-center px-6" data-aos="fade-up">
-      <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight mb-6">
-        <span class="logo block mb-4">BIMAX</span>
-        <span class="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-          Innovative Care · Advanced Technology
-        </span>
-      </h1>
-      <p class="max-w-2xl mx-auto mt-4 text-slate-200/90">
-        让清洁更高效 · 更健康 · 更可持续
-      </p>
-      <div class="mt-10 flex flex-wrap gap-3 justify-center">
-        <a href="#highlights" class="btn-primary">了解更多</a>
-        <a href="#contact" class="btn-ghost">商务合作</a>
-      </div>
+  <!-- 3D Hero -->
+  <section id="hero" class="hero">
+    <canvas id="bg3d"></canvas>
+    <div class="hero-copy">
+      <h1>BIMAX</h1>
+      <p class="tagline">Innovative Care · Advanced Technology</p>
+      <a class="btn" href="#posters">Explore</a>
     </div>
-    <div class="absolute bottom-6 inset-x-0 flex justify-center">
-      <a href="#highlights" class="animate-bounce text-slate-100/70 text-sm">Scroll</a>
+    <div class="scroll-ind">Scroll</div>
+  </section>
+
+  <!-- Scroll panels drive background modes -->
+  <section id="s1" class="panel">
+    <div class="panel-inner">
+      <h2>Clean · Pure · Efficient</h2>
+      <p>水波：洁净活力的灵感源泉，象征我们对皮肤与环境的双重友好。</p>
     </div>
   </section>
 
-  <!-- Highlights -->
-  <section id="highlights" class="section">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-up">核心优势</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <div class="card" data-aos="fade-up">
-          <div class="card-glow"></div>
-          <h3 class="card-title">环保科技</h3>
-          <p class="card-desc">配方生物降解率 >98%，无磷、无荧光剂、无微塑料，更安全更环保。</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="60">
-          <div class="card-glow"></div>
-          <h3 class="card-title">全球产能</h3>
-          <p class="card-desc">日产能达 1600 万件，覆盖全球 5000 万+ 家庭用户，保障供应稳定。</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="120">
-          <div class="card-glow"></div>
-          <h3 class="card-title">研发实力</h3>
-          <p class="card-desc">联合绿色洗涤研究院，已获 30+ 发明专利，持续推动创新与品质升级。</p>
-        </div>
-      </div>
+  <section id="s2" class="panel">
+    <div class="panel-inner">
+      <h2>Soft Bubbles</h2>
+      <p>泡泡：温和亲肤的护理体验，带来轻盈与舒缓。</p>
     </div>
   </section>
 
-  <!-- Products & Services -->
-  <section id="products" class="section alt">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-up">产品与服务</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        <div class="card" data-aos="fade-up">
-          <div class="card-glow"></div>
-          <h3 class="card-title">洗护科技</h3>
-          <p class="card-desc">高效抑菌、低残留、低能耗的清洁护理方案，适用于家庭与商用场景。</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="60">
-          <div class="card-glow"></div>
-          <h3 class="card-title">护理方案</h3>
-          <p class="card-desc">从配方研发到场景落地的一体化服务，满足多样化洗护需求。</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="120">
-          <div class="card-glow"></div>
-          <h3 class="card-title">可持续</h3>
-          <p class="card-desc">绿色供应链与环保包装，节水降碳，推动可持续发展。</p>
-        </div>
+  <section id="s3" class="panel">
+    <div class="panel-inner">
+      <h2>Iridescent Silk</h2>
+      <p>流光丝绸：高分子与表活的协同，带来丝滑触感与高级质感。</p>
+    </div>
+  </section>
+
+  <!-- Interactive posters -->
+  <section id="posters" class="posters">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Brand Showcase</h2>
+        <p>极简海报式展示，hover 有水波扩散与轻微视差，滚动淡入。</p>
+      </div>
+      <div class="poster-grid">
+        <a class="poster" style="--img:url('assets/water-blob.png')">
+          <div class="poster-meta">
+            <h3>Pure Water</h3>
+            <p>高纯水体系 · 低残留 · 敏感肌可用</p>
+          </div>
+        </a>
+        <a class="poster" style="--img:url('assets/pink-bubbles.png')">
+          <div class="poster-meta">
+            <h3>Soft Bubbles</h3>
+            <p>细腻泡沫 · 亲肤洗感 · 易冲洗</p>
+          </div>
+        </a>
+        <a class="poster" style="--img:url('assets/silk-rainbow.png')">
+          <div class="poster-meta">
+            <h3>Silk Finish</h3>
+            <p>丝绸般顺滑 · 微光泽 · 视觉高级</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Values -->
-  <section id="values" class="section">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-up">品牌价值</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <div class="value" data-aos="fade-up">
-          <h4>创新</h4>
-          <p>持续研发与技术迭代，引领行业升级。</p>
+  <!-- About / concise brand copy -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <h2>About BIMAX</h2>
+          <p>我们以“科技 × 洁净”为核心，专注高标准洗护研发与制造。重点关注安全性、可持续以及消费者的真实体验。</p>
+          <ul class="bullets">
+            <li>环保：无磷、无荧光剂、0 微塑料，配方生物降解率 &gt; 98%</li>
+            <li>品质：欧洲/国标双测，皮肤学测试合格</li>
+            <li>产能：日产能 1600 万件，稳定供给全球市场</li>
+            <li>研发：30+ 发明专利，持续推进绿色配方</li>
+          </ul>
         </div>
-        <div class="value" data-aos="fade-up" data-aos-delay="60">
-          <h4>健康</h4>
-          <p>以用户安全为核心，呵护肌肤与呼吸环境。</p>
-        </div>
-        <div class="value" data-aos="fade-up" data-aos-delay="120">
-          <h4>可持续</h4>
-          <p>推动绿色供应链与环保生产，降低环境负担。</p>
+        <div class="stats">
+          <div class="stat"><span>98%+</span><label>生物降解率</label></div>
+          <div class="stat"><span>16M/day</span><label>日产能</label></div>
+          <div class="stat"><span>30+</span><label>发明专利</label></div>
+          <div class="stat"><span>50M+</span><label>服务家庭</label></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section alt">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-up">联系我们</h2>
-      <div class="grid md:grid-cols-2 gap-8 mt-8">
-        <form class="space-y-4" data-aos="fade-up">
-          <input class="input" type="text" placeholder="姓名 Name" required />
-          <input class="input" type="email" placeholder="邮箱 Email" required />
-          <textarea class="input h-32" placeholder="留言 Message"></textarea>
-          <button class="btn-primary w-full" type="submit">发送</button>
-        </form>
-        <div class="space-y-3 text-slate-300/90" data-aos="fade-up" data-aos-delay="80">
-          <p>商务合作：biz@bimax.com</p>
-          <p>公司地址：上海 · 浦东新区</p>
-        </div>
-      </div>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>商务合作：biz@bimax.com · Shanghai, China</p>
     </div>
   </section>
 
-  <footer class="py-10 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
-      <span class="logo">BIMAX</span>
-      <span>© 2025 BIMAX. All Rights Reserved.</span>
-    </div>
+  <footer class="site-foot">
+    <div class="wrap"><span>© 2025 BIMAX</span></div>
   </footer>
 
   <script src="script.js"></script>
