@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIMAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>品牌练习首页</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Canvas 背景 -->
-  <canvas id="bg3d"></canvas>
+  <!-- 顶部导航栏 -->
+  <header>
+    <div class="logo">MyBrand</div>
+    <nav>
+      <ul>
+        <li><a href="#">品牌故事</a></li>
+        <li><a href="#">产品系列</a></li>
+        <li><a href="#">最新消息</a></li>
+        <li><a href="#">联系我们</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- 内容区 -->
-  <section id="s1" class="section">WATER MODE</section>
-  <section id="s2" class="section">BUBBLE MODE</section>
-  <section id="s3" class="section">SILK MODE</section>
+  <!-- 主视觉区 -->
+  <section class="hero">
+    <h1>纯净香氛 · 丝滑呵护</h1>
+    <p>Inspired by nature, crafted for comfort.</p>
+  </section>
 
-  <!-- JS -->
-  <script type="module" src="script.js"></script>
+  <!-- 产品展示区 -->
+  <section class="products">
+    <h2>产品系列</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="产品图" />
+        <h3>衣物护理</h3>
+        <p>柔顺、洁净、香氛三合一</p>
+        <a href="#">了解更多</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="产品图" />
+        <h3>居家清洁</h3>
+        <p>高效去污，温和配方</p>
+        <a href="#">了解更多</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌理念区 -->
+  <section class="philosophy">
+    <h2>品牌理念</h2>
+    <div class="philosophy-content">
+      <img src="https://via.placeholder.com/400x300" alt="理念图" />
+      <div>
+        <p>我们坚持环保、科技与美学的融合，打造令人安心的生活体验。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <p>© 2025 MyBrand. 版权所有。</p>
+    <p><a href="#">隐私政策</a> | <a href="#">社群连结</a></p>
+  </footer>
 </body>
 </html>
