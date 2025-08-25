@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BIMAX - Innovative Skincare</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>BIMAX - Skincare</title>
+  <style>
+    body,html {
+      margin:0; padding:0; overflow:hidden;
+      font-family: Helvetica, sans-serif;
+      background:#000; color:#fff;
+    }
+    canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+    .overlay {
+      position:relative; z-index:10; text-align:center; padding:3rem;
+    }
+    section { min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
+    h1.logo { font-size:3rem; margin-bottom:1rem; }
+    .poster-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1rem; margin-top:2rem;
+    }
+    .poster {
+      background:rgba(255,255,255,0.08);
+      border-radius:1rem; padding:3rem 1rem; font-weight:bold;
+      backdrop-filter:blur(8px); cursor:pointer;
+    }
+  </style>
 </head>
 <body>
-  <!-- Three.js Canvas -->
   <canvas id="bg3d"></canvas>
 
-  <!-- Overlay UI -->
   <div class="overlay">
     <header>
       <h1 class="logo">BIMAX</h1>
-      <p class="slogan">Innovative Care · Advanced Skincare Technology</p>
+      <p>Innovative Care · Advanced Skincare Technology</p>
     </header>
 
-    <!-- Section 1 -->
-    <section id="s1" class="panel">
-      <h2>About BIMAX</h2>
-      <p>Pure · Gentle · Effective</p>
-      <div class="cards">
-        <div class="card">98%+ Natural Ingredients</div>
-        <div class="card">16M+ Units Daily Capacity</div>
-        <div class="card">30+ Global Markets</div>
-        <div class="card">50M+ Happy Users</div>
-      </div>
-    </section>
-
-    <!-- Section 2 -->
-    <section id="s2" class="panel">
-      <h2>Essence of Care</h2>
+    <section id="s1"><h2>About BIMAX</h2><p>Pure · Gentle · Effective</p></section>
+    <section id="s2"><h2>Essence of Care</h2>
       <div class="poster-grid">
-        <div class="poster water">源自纯净</div>
-        <div class="poster bubble">轻盈清洁</div>
-        <div class="poster silk">科技守护</div>
+        <div class="poster">源自纯净</div>
+        <div class="poster">轻盈清洁</div>
+        <div class="poster">科技守护</div>
       </div>
     </section>
-
-    <!-- Section 3 -->
-    <section id="s3" class="panel">
-      <h2>Contact Us</h2>
-      <p>Email: contact@bimax.com</p>
-    </section>
+    <section id="s3"><h2>Contact Us</h2><p>Email: contact@bimax.com</p></section>
   </div>
 
   <!-- Three.js + GSAP -->
@@ -53,7 +53,48 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Main script -->
-  <script src="script.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const canvas = document.getElementById('bg3d');
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+    camera.position.set(0,0,6);
+
+    const light = new THREE.PointLight(0xffffff,1); light.position.set(3,3,3); scene.add(light);
+    const ambient = new THREE.AmbientLight(0xffffff,0.4); scene.add(ambient);
+
+    // Rotating logo
+    let logoMesh;
+    new THREE.FontLoader().load("https://unpkg.com/three@0.158.0/examples/fonts/helvetiker_bold.typeface.json", font=>{
+      const geo = new THREE.TextGeometry("BIMAX",{font,size:1,height:0.3});
+      const mat = new THREE.MeshStandardMaterial({color:0x7cc6ff, metalness:0.8, roughness:0.3});
+      logoMesh = new THREE.Mesh(geo,mat);
+      logoMesh.position.set(-2.5,0,0);
+      scene.add(logoMesh);
+    });
+
+    // Background sphere
+    const bgGeo = new THREE.SphereGeometry(30,64,64);
+    const bgMat = new THREE.MeshBasicMaterial({color:0x0ea5e9, side:THREE.BackSide});
+    const bgMesh = new THREE.Mesh(bgGeo,bgMat); scene.add(bgMesh);
+
+    // Scroll effects
+    ScrollTrigger.create({ trigger:"#s1", start:"top center", onEnter:()=>bgMat.color.set(0x0ea5e9) });
+    ScrollTrigger.create({ trigger:"#s2", start:"top center", onEnter:()=>bgMat.color.set(0xffaacc) });
+    ScrollTrigger.create({ trigger:"#s3", start:"top center", onEnter:()=>bgMat.color.set(0xffffff) });
+
+    window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();});
+
+    function animate(){
+      requestAnimationFrame(animate);
+      if(logoMesh) logoMesh.rotation.y += 0.01;
+      renderer.render(scene,camera);
+    }
+    animate();
+  </script>
 </body>
 </html>
